@@ -24,6 +24,7 @@ public class Mine : MonoBehaviour {
 	int life;
 	bool dead = false;
 	float protect;
+	float oldScale = 0.0f;
 
 	void Awake() {
 		life = initialLife;
@@ -37,6 +38,12 @@ public class Mine : MonoBehaviour {
 			if ( protect < 0.0f ) {
 				protect = 0.0f;
 			}
+		}
+	}
+
+	void OnDestroy() {
+		if ( oldScale > 0.0f ) {
+			Time.timeScale = oldScale;
 		}
 	}
 
@@ -103,11 +110,12 @@ public class Mine : MonoBehaviour {
 		render.enabled = false;
 		mineCollider.enabled = false;
 		particlesExplode.Play();
-		float oldScale = Time.timeScale;
+		oldScale = Time.timeScale;
 		Time.timeScale = 0.0f;
 		yield return null;
 		if ( oldScale > 0.0f ) {
 			Time.timeScale = oldScale;
+			oldScale = 0.0f;
 		}
 		Transform explosion = Instantiate<Transform>(explosionPrefab);
 		explosion.position = transform.position;
