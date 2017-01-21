@@ -7,6 +7,7 @@ public class ShipLife : MonoBehaviour {
 	public AudioSource audioSource;
 	public AudioClip soundDeath;
 	public AudioClip[] soundGather;
+	public LivesHolder livesHolder;
 
 	CameraShake cameraShake;
 	ShipController shipController;
@@ -28,21 +29,24 @@ public class ShipLife : MonoBehaviour {
 		Mine mine = other.GetComponent<Mine>();
 		if ( mine != null ) {
 			if ( mine.mineEnabled ) {
-				audioSource.PlayOneShot(soundDeath);
-				cameraShake.Shake();
-				shipController.enabled = false;
-			} else {
-				/*if ( ! audioSource.isPlaying ) {
-					audioSource.PlayOneShot(soundGather[Random.Range(0, soundGather.Length)]);
-				}
-				mine.DestroyMine();*/
+				KillShip();
 			}
 		}
 	}
 
 	void OnShipKilled() {
-		shipController.enabled = true;
-		shipController.ResetPosition();
+		if ( livesHolder.NoMoreLives ) {
+			gameObject.SetActive(false);
+		} else {
+			shipController.enabled = true;
+			shipController.ResetPosition();
+		}
+	}
+
+	void KillShip() {
+		audioSource.PlayOneShot(soundDeath);
+		cameraShake.Shake();
+		shipController.enabled = false;
 	}
 
 }

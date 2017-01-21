@@ -14,6 +14,9 @@ public class LevelProgress : MonoBehaviour {
 	public AudioClip stageSound;
 	public float stageNumberScale;
 	public LevelBar[] bars;
+	public LivesHolder livesHolder;
+
+	public int CurrentStage { get { return stage; } }
 
 	float nextLevel;
 	int pos = 0;
@@ -36,6 +39,7 @@ public class LevelProgress : MonoBehaviour {
 	}
 
 	void Update() {
+		if ( livesHolder.NoMoreLives ) return;
 		if ( Time.timeScale > 0.0f ) {
 			nextLevel -= Time.deltaTime;
 			if ( nextLevel <= 0.0f ) {
@@ -89,7 +93,6 @@ public class LevelProgress : MonoBehaviour {
 
 	void OnShipKilled() {
 		DeactivateAllBars();
-		stage = 0;
 		stageNumber.text = stage.ToString();
 	}
 
