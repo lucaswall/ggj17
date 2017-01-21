@@ -427,6 +427,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadZone: 0.1
   moveStep: 10
+  limitVertical: 4.8
+  limitHorizontalMin: -7.5
+  limitHorizontalMax: 0
 --- !u!135 &1562795049
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -435,7 +438,7 @@ SphereCollider:
   m_GameObject: {fileID: 1562795046}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
@@ -590,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseLine: 0
   amplitude: -5
-  period: 2
+  period: 15
 --- !u!4 &2025574872
 Transform:
   m_ObjectHideFlags: 0
@@ -649,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseLine: 0
   amplitude: 5
-  period: 2
+  period: 10
 --- !u!114 &2103363058
 MonoBehaviour:
   m_ObjectHideFlags: 0

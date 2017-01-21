@@ -6,6 +6,8 @@ public class ShipController : MonoBehaviour {
 
 	public float deadZone;
 	public float moveStep;
+	public float limitVertical;
+	public float limitHorizontalMin, limitHorizontalMax;
 
 	Vector3 resetPosition;
 
@@ -22,12 +24,30 @@ public class ShipController : MonoBehaviour {
 	}
 
 	void Update() {
+		CheckForMove();
+		CheckForLimits();
+	}
+
+	void CheckForMove() {
 		float h = Input.GetAxis("Vertical");
+		float v = Input.GetAxis("Horizontal");
+		Vector3 pos = transform.position;
 		if ( Mathf.Abs(h) > deadZone ) {
-			Vector3 pos = transform.position;
 			pos.y += Mathf.Sign(h) * moveStep * Time.deltaTime;
-			transform.position = pos;
 		}
+		if ( Mathf.Abs(v) > deadZone ) {
+			pos.x += Mathf.Sign(v) * moveStep * Time.deltaTime;
+		}
+		transform.position = pos;
+	}
+
+	void CheckForLimits() {
+		Vector3 pos = transform.position;
+		if ( pos.y > limitVertical ) pos.y = limitVertical;
+		if ( pos.y < -limitVertical ) pos.y = -limitVertical;
+		if ( pos.x > limitHorizontalMax ) pos.x = limitHorizontalMax;
+		if ( pos.x < limitHorizontalMin ) pos.x = limitHorizontalMin;
+		transform.position = pos;
 	}
 
 	void OnShipKilled() {
