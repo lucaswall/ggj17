@@ -452,8 +452,13 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
+    UNet: 1
+  cloudProjectId: a345dd0d-d651-4c3d-af93-af4b450a34c8
+  projectName: Wave Rider 23
+  organizationId: kthulhu
   cloudEnabled: 0
