@@ -33,10 +33,10 @@ public class ShipController : MonoBehaviour {
 		float v = Input.GetAxis("Horizontal");
 		Vector3 pos = transform.position;
 		if ( Mathf.Abs(h) > deadZone ) {
-			pos.y += Mathf.Sign(h) * moveStep * Time.deltaTime;
+			pos.y += Mathf.Sign(h) * moveStep * Time.unscaledDeltaTime;
 		}
 		if ( Mathf.Abs(v) > deadZone ) {
-			pos.x += Mathf.Sign(v) * moveStep * Time.deltaTime;
+			pos.x += Mathf.Sign(v) * moveStep * Time.unscaledDeltaTime;
 		}
 		transform.position = pos;
 	}

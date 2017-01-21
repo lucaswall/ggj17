@@ -8,7 +8,7 @@ public class SineMovement : MonoBehaviour {
 	public float amplitude;
 	public float period;
 
-	float angle = 0.0f;
+	float angle = Mathf.PI / 2;
 
 	void Update() {
 		angle += ( Mathf.PI * 2 / period ) * Time.deltaTime;
