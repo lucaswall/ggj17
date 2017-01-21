@@ -10,7 +10,7 @@ public class ShipLife : MonoBehaviour {
 			if ( mine.mineEnabled ) {
 				GameEvents.ShipKilled();
 			} else {
-				Destroy(mine.gameObject);
+				mine.DestroyMine();
 			}
 		}
 	}

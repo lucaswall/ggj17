@@ -5,6 +5,7 @@ using UnityEngine;
 public class MineGroup : MonoBehaviour {
 
 	public float affectDistanceSq;
+	public float checkThresholdPosition;
 
 	void Update() {
 		CheckAllMines();
@@ -25,6 +26,7 @@ public class MineGroup : MonoBehaviour {
 
 	void DisableNearMines(GameObject[] mines) {
 		for ( int i = 0; i < mines.Length; i++ ) {
+			if ( mines[i].transform.position.x < checkThresholdPosition ) continue;
 			Mine mine1 = mines[i].GetComponent<Mine>();
 			for ( int j = i + 1; j < mines.Length; j++ ) {
 				Vector3 dist = mines[i].transform.position - mines[j].transform.position;

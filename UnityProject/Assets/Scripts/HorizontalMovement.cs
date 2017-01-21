@@ -12,7 +12,7 @@ public class HorizontalMovement : MonoBehaviour {
 		pos.x += speed * Time.deltaTime;
 		transform.position = pos;
 		if ( pos.x < killPosition ) {
-			Destroy(gameObject);
+			GetComponent<Mine>().DestroyMine();
 		}
 	}
 

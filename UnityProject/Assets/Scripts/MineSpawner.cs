@@ -6,10 +6,12 @@ public class MineSpawner : MonoBehaviour {
 
 	public float interval;
 	public int waveId;
+	public int initialMineCount;
 
 	public Transform minePrefab;
 
 	float nextSpawn;
+	Queue<Transform> mines = new Queue<Transform>();
 
 	void Start() {
 		nextSpawn = interval;
@@ -23,10 +25,35 @@ public class MineSpawner : MonoBehaviour {
 		}
 	}
 
+	void FillMineCache() {
+		for ( int i = 0; i < initialMineCount; i++ ) {
+			ReturnMineToPool(NewMine());
+		}
+	}
+
 	void SpawnMine() {
-		Transform mine = Instantiate<Transform>(minePrefab);
+		Transform mine;
+		if ( mines.Count > 0 ) {
+			mine = mines.Dequeue();
+		} else {
+			mine = NewMine();
+		}
 		mine.position = transform.position;
-		mine.GetComponent<Mine>().waveId = waveId;
+		mine.GetComponent<Mine>().EnableMine();
+		mine.gameObject.SetActive(true);
+	}
+
+	public void ReturnMineToPool(Transform mine) {
+		mine.gameObject.SetActive(false);
+		mines.Enqueue(mine);
+	}
+
+	Transform NewMine() {
+		Transform mine = Instantiate<Transform>(minePrefab);
+		Mine mineRef = mine.GetComponent<Mine>();
+		mineRef.waveId = waveId;
+		mineRef.spawner = this;
+		return mine;
 	}
 
 }
