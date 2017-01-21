@@ -8,8 +8,14 @@ public class ShipController : MonoBehaviour {
 	public float moveStep;
 	public float limitHorizontalLeft, limitHorizontalRight;
 	public float limitVerticalMin, limitVerticalMax;
+	public Transform bulletPrefab;
+	public Transform bulletPivot;
+	public float shootFreq;
+	public AudioSource audioSource;
+	public AudioClip soundShoot;
 
 	float limitHorizontalMin, limitHorizontalMax;
+	float nextShoot = 0.0f;
 
 	Vector3 resetPosition;
 
@@ -24,6 +30,7 @@ public class ShipController : MonoBehaviour {
 	void Update() {
 		CheckForMove();
 		CheckForLimits();
+		CheckForShoot();
 	}
 
 	void CheckForMove() {
@@ -52,6 +59,22 @@ public class ShipController : MonoBehaviour {
 		transform.position = resetPosition;
 		gameObject.SetActive(true);
 		enabled = true;
+	}
+
+	void CheckForShoot() {
+		if ( Input.GetButton("Fire") ) {
+			nextShoot -= Time.unscaledDeltaTime;
+			if ( nextShoot <= 0.0f ) {
+				nextShoot = shootFreq;
+				SpawnBullet();
+			}
+		}
+	}
+
+	void SpawnBullet() {
+		audioSource.PlayOneShot(soundShoot);
+		Transform bullet = Instantiate<Transform>(bulletPrefab);
+		bullet.position = bulletPivot.position;
 	}
 
 }

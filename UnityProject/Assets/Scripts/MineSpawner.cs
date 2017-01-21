@@ -7,8 +7,8 @@ public class MineSpawner : MonoBehaviour {
 	public float interval;
 	public int waveId;
 	public int initialMineCount;
-
 	public Transform minePrefab;
+	public AudioSource audioSource;
 
 	float nextSpawn;
 	Queue<Transform> mines = new Queue<Transform>();
@@ -40,7 +40,7 @@ public class MineSpawner : MonoBehaviour {
 		}
 		mine.position = transform.position;
 		Mine mineRef = mine.GetComponent<Mine>();
-		mineRef.EnableMine();
+		mineRef.ResetMine();
 		mineRef.CheckForNearMines();
 		mine.gameObject.SetActive(true);
 	}
@@ -55,6 +55,7 @@ public class MineSpawner : MonoBehaviour {
 		Mine mineRef = mine.GetComponent<Mine>();
 		mineRef.waveId = waveId;
 		mineRef.spawner = this;
+		mineRef.audioSource = audioSource;
 		return mine;
 	}
 

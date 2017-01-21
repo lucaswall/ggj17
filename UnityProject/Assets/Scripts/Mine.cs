@@ -12,6 +12,18 @@ public class Mine : MonoBehaviour {
 	public Color colorDisabled;
 	public float affectDistanceSq;
 	public float checkThresholdPosition;
+	public int initialLife;
+	public Transform explosionPrefab;
+	public AudioSource audioSource;
+	public AudioClip soundDestroy;
+	public ParticleSystem particlesExplode;
+
+	int life;
+	bool dead = false;
+
+	void Start() {
+		life = initialLife;
+	}
 
 	public void DisableMine() {
 		render.color = colorDisabled;
@@ -25,6 +37,13 @@ public class Mine : MonoBehaviour {
 
 	public void DestroyMine() {
 		spawner.ReturnMineToPool(transform);
+	}
+
+	public void ResetMine() {
+		life = initialLife;
+		dead = false;
+		render.enabled = true;
+		EnableMine();
 	}
 
 	public void CheckForNearMines() {
@@ -41,6 +60,36 @@ public class Mine : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void Hit() {
+		if ( --life <= 0.0f ) {
+			KillMine();
+		}
+	}
+
+	public void KillMine() {
+		if ( dead ) return;
+		dead = true;
+		StartCoroutine(DoDestroy());
+	}
+
+	IEnumerator DoDestroy() {
+		if ( ! audioSource.isPlaying ) {
+			audioSource.PlayOneShot(soundDestroy);
+		}
+		render.enabled = false;
+		particlesExplode.Play();
+		float oldScale = Time.timeScale;
+		Time.timeScale = 0.0f;
+		yield return null;
+		if ( oldScale > 0.0f ) {
+			Time.timeScale = oldScale;
+		}
+		Transform explosion = Instantiate<Transform>(explosionPrefab);
+		explosion.position = transform.position;
+		while ( particlesExplode.isPlaying ) yield return null;
+		DestroyMine();
 	}
 
 }

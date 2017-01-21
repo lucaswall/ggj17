@@ -30,9 +30,7 @@ public class ShipLife : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		Mine mine = other.GetComponent<Mine>();
 		if ( mine != null ) {
-			if ( mine.mineEnabled ) {
-				KillShip();
-			}
+			KillShip();
 		}
 	}
 
