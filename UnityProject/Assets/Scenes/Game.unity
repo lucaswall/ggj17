@@ -262,6 +262,47 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &997723443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 997723445}
+  - component: {fileID: 997723444}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &997723444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 997723443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1ed1039159222409e92618d1ed9ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedInc: 0.05
+--- !u!4 &997723445
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 997723443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1115524987
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +486,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b64652d1692aef4489397e9042ebe75a, type: 3}
   - {fileID: 8300000, guid: bf733603f56ca094a98a88630fc6d473, type: 3}
   - {fileID: 8300000, guid: 67fc11a3a3f660442b4885d2dc7aeb3e, type: 3}
-  shipKillDelay: 0.7
 --- !u!54 &1562795051
 Rigidbody:
   m_ObjectHideFlags: 0
