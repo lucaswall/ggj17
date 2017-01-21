@@ -128,6 +128,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   soundDestroy: {fileID: 8300000, guid: c6936692932a5fb4980c23ffbdd1bb4a, type: 3}
   particlesExplode: {fileID: 198503087958406374}
+  startEnabled: 1
+  mineCollider: {fileID: 135340023271806830}
 --- !u!114 &114089225484672748
 MonoBehaviour:
   m_ObjectHideFlags: 1

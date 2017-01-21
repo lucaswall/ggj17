@@ -27,6 +27,7 @@ public class ShipBullet : MonoBehaviour {
 			animator.SetTrigger("destroy");
 			Destroy(gameObject, 2.0f);
 			if ( ! mine.mineEnabled ) {
+				Debug.Log("hey!!");
 				mine.Hit();
 			}
 		}

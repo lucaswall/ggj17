@@ -17,12 +17,16 @@ public class Mine : MonoBehaviour {
 	public AudioSource audioSource;
 	public AudioClip soundDestroy;
 	public ParticleSystem particlesExplode;
+	public bool startEnabled;
+	public Collider mineCollider;
 
 	int life;
 	bool dead = false;
 
-	void Start() {
+	void Awake() {
 		life = initialLife;
+		if ( startEnabled ) EnableMine();
+		else DisableMine();
 	}
 
 	public void DisableMine() {
@@ -36,13 +40,19 @@ public class Mine : MonoBehaviour {
 	}
 
 	public void DestroyMine() {
-		spawner.ReturnMineToPool(transform);
+		if ( spawner != null ) {
+			mineCollider.enabled = false;
+			spawner.ReturnMineToPool(transform);
+		} else {
+			Destroy(gameObject);
+		}
 	}
 
 	public void ResetMine() {
 		life = initialLife;
 		dead = false;
 		render.enabled = true;
+		mineCollider.enabled = true;
 		EnableMine();
 	}
 
@@ -75,10 +85,11 @@ public class Mine : MonoBehaviour {
 	}
 
 	IEnumerator DoDestroy() {
-		if ( ! audioSource.isPlaying ) {
+		if ( audioSource != null && ! audioSource.isPlaying ) {
 			audioSource.PlayOneShot(soundDestroy);
 		}
 		render.enabled = false;
+		mineCollider.enabled = false;
 		particlesExplode.Play();
 		float oldScale = Time.timeScale;
 		Time.timeScale = 0.0f;

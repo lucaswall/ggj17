@@ -6,6 +6,8 @@ public class EnemyEnter : MonoBehaviour {
 
 	public SineMovement sineMovement;
 	public MineSpawner mineSpawner;
+	public float enterDelay;
+	public float bombDelay;
 
 	void Start() {
 		GameEvents.OnRestartGame += OnRestartGame;
@@ -32,7 +34,7 @@ public class EnemyEnter : MonoBehaviour {
 		Vector3 endPos = new Vector3(endX, y, 0.0f);
 		transform.position = startPos;
 
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(enterDelay);
 
 		float t = 0.0f;
 		while ( t <= 1.0f ) {
@@ -43,7 +45,7 @@ public class EnemyEnter : MonoBehaviour {
 		transform.position = endPos;
 
 		sineMovement.enabled = true;
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(bombDelay);
 		mineSpawner.enabled = true;
 	}
 
