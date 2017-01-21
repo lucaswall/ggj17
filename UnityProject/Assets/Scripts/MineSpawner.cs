@@ -17,7 +17,7 @@ public class MineSpawner : MonoBehaviour {
 		nextSpawn = interval;
 	}
 
-	void Update() {
+	void FixedUpdate() {
 		nextSpawn -= Time.deltaTime;
 		if ( nextSpawn <= 0.0f ) {
 			nextSpawn += interval;

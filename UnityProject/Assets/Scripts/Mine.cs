@@ -8,14 +8,16 @@ public class Mine : MonoBehaviour {
 	public int waveId;
 	public bool mineEnabled = true;
 	public MineSpawner spawner;
+	public Color colorEnabled;
+	public Color colorDisabled;
 
 	public void DisableMine() {
-		render.color = Color.green;
+		render.color = colorDisabled;
 		mineEnabled = false;
 	}
 
 	public void EnableMine() {
-		render.color = Color.red;
+		render.color = colorEnabled;
 		mineEnabled = true;
 	}
 

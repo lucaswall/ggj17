@@ -7,12 +7,18 @@ public class ShipController : MonoBehaviour {
 	public float deadZone;
 	public float moveStep;
 	public float limitVertical;
-	public float limitHorizontalMin, limitHorizontalMax;
+	public float limitHorizontalLeft, limitHorizontalRight;
+
+	float limitHorizontalMin, limitHorizontalMax;
 
 	Vector3 resetPosition;
 
 	void Start() {
 		resetPosition = transform.position;
+		float z = - Camera.main.transform.position.z;
+		limitHorizontalMin = Camera.main.ViewportToWorldPoint(new Vector3(limitHorizontalLeft, 0.0f, z)).x;
+		limitHorizontalMax = Camera.main.ViewportToWorldPoint(new Vector3(limitHorizontalRight, 0.0f, z)).x;
+		transform.position = new Vector3(limitHorizontalMin, 0.0f, 0.0f);
 	}
 
 	void OnEnable() {

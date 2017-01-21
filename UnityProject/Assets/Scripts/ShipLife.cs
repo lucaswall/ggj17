@@ -21,10 +21,10 @@ public class ShipLife : MonoBehaviour {
 				audioSource.PlayOneShot(soundDeath);
 				cameraShake.Shake();
 			} else {
-				if ( ! audioSource.isPlaying ) {
+				/*if ( ! audioSource.isPlaying ) {
 					audioSource.PlayOneShot(soundGather[Random.Range(0, soundGather.Length)]);
 				}
-				mine.DestroyMine();
+				mine.DestroyMine();*/
 			}
 		}
 	}
