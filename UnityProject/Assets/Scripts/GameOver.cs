@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
 
@@ -25,7 +26,8 @@ public class GameOver : MonoBehaviour {
 
 	void Update() {
 		if ( Input.GetButtonDown("Start") ) {
-			GameEvents.RestartGame();
+			//GameEvents.RestartGame();
+			SceneManager.LoadScene("MainMenu");
 			gameObject.SetActive(false);
 		}
 	}
