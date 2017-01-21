@@ -19,14 +19,25 @@ public class Mine : MonoBehaviour {
 	public ParticleSystem particlesExplode;
 	public bool startEnabled;
 	public Collider mineCollider;
+	public float protectTime;
 
 	int life;
 	bool dead = false;
+	float protect;
 
 	void Awake() {
 		life = initialLife;
 		if ( startEnabled ) EnableMine();
 		else DisableMine();
+	}
+
+	void Update() {
+		if ( protect > 0.0f ) {
+			protect -= Time.unscaledDeltaTime;
+			if ( protect < 0.0f ) {
+				protect = 0.0f;
+			}
+		}
 	}
 
 	public void DisableMine() {
@@ -54,6 +65,7 @@ public class Mine : MonoBehaviour {
 		render.enabled = true;
 		mineCollider.enabled = true;
 		EnableMine();
+		protect = protectTime;
 	}
 
 	public void CheckForNearMines() {
@@ -79,7 +91,7 @@ public class Mine : MonoBehaviour {
 	}
 
 	public void KillMine() {
-		if ( dead ) return;
+		if ( dead || protect > 0.0f ) return;
 		dead = true;
 		StartCoroutine(DoDestroy());
 	}
