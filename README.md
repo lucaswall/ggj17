@@ -1,6 +1,9 @@
-# Wave Rider #
+# Wave Rider 23 #
 
 A game made for the Global Game Jam 2017. http://globalgamejam.org/
+
+
+Deep in enemy territory bomber ships guard the borders of the Hegemonic Empire. Match their waves, figure out their weakness and ride through the mines.
 
 
 # Authors
