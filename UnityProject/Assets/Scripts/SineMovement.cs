@@ -18,8 +18,12 @@ public class SineMovement : MonoBehaviour {
 	void Update() {
 		angle += ( Mathf.PI * 2 / period ) * Time.deltaTime;
 		Vector3 pos = transform.position;
-		pos.y = baseLine + Mathf.Sin(angle) * amplitude;
+		pos.y = GetPositionY();
 		transform.position = pos;
+	}
+
+	public float GetPositionY() {
+		return baseLine + Mathf.Sin(angle) * amplitude;
 	}
 
 }

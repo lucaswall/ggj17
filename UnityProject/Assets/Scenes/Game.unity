@@ -1423,10 +1423,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2025574872}
+  - component: {fileID: 2025574873}
   - component: {fileID: 2025574871}
   - component: {fileID: 2025574870}
   m_Layer: 0
-  m_Name: MineSpawner
+  m_Name: MineSpawner2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1438,7 +1439,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025574869}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 346e3df0c1083704ab70d701c2b916b4, type: 3}
   m_Name: 
@@ -1453,7 +1454,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025574869}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6eacb59bcf7ed54989de5c910e16f04, type: 3}
   m_Name: 
@@ -1476,6 +1477,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2025574873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2025574869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61a3572415295a41b766a59bb484945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sineMovement: {fileID: 2025574871}
+  mineSpawner: {fileID: 2025574870}
 --- !u!1 &2103363055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,10 +1498,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2103363056}
+  - component: {fileID: 2103363059}
   - component: {fileID: 2103363057}
   - component: {fileID: 2103363058}
   m_Layer: 0
-  m_Name: MineSpawner
+  m_Name: MineSpawner1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1528,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2103363055}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6eacb59bcf7ed54989de5c910e16f04, type: 3}
   m_Name: 
@@ -1528,7 +1543,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2103363055}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 346e3df0c1083704ab70d701c2b916b4, type: 3}
   m_Name: 
@@ -1537,6 +1552,19 @@ MonoBehaviour:
   waveId: 1
   initialMineCount: 300
   minePrefab: {fileID: 4182396648179194, guid: a23c5eaf1e6a7a4449502893ec693c5e, type: 2}
+--- !u!114 &2103363059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2103363055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61a3572415295a41b766a59bb484945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sineMovement: {fileID: 2103363057}
+  mineSpawner: {fileID: 2103363058}
 --- !u!1 &2109732511
 GameObject:
   m_ObjectHideFlags: 0
