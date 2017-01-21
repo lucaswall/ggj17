@@ -1635,6 +1635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadZone: 0.1
   moveStep: 3.5
+  moveStepShoot: 2
   limitHorizontalLeft: 0.1
   limitHorizontalRight: 0.6
   limitVerticalMin: -4.8
@@ -1645,6 +1646,7 @@ MonoBehaviour:
   shootFreq: 0.05
   audioSource: {fileID: 1562795052}
   soundShoot: {fileID: 8300000, guid: 421b1022c72a95345a1d8d9f7c114a3d, type: 3}
+  shootPushback: {x: -0.01, y: 0, z: 0}
 --- !u!135 &1562795049
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class ShipController : MonoBehaviour {
 
 	public float deadZone;
 	public float moveStep;
+	public float moveStepShoot;
 	public float limitHorizontalLeft, limitHorizontalRight;
 	public float limitVerticalMin, limitVerticalMax;
 	public Transform bulletPrefab;
@@ -13,6 +14,7 @@ public class ShipController : MonoBehaviour {
 	public float shootFreq;
 	public AudioSource audioSource;
 	public AudioClip soundShoot;
+	public Vector3 shootPushback;
 
 	float limitHorizontalMin, limitHorizontalMax;
 	float nextShoot = 0.0f;
@@ -37,11 +39,12 @@ public class ShipController : MonoBehaviour {
 		float h = Input.GetAxis("Vertical");
 		float v = Input.GetAxis("Horizontal");
 		Vector3 pos = transform.position;
+		float move = Input.GetButton("Fire") ? moveStepShoot : moveStep;
 		if ( Mathf.Abs(h) > deadZone ) {
-			pos.y += Mathf.Sign(h) * moveStep * Time.unscaledDeltaTime;
+			pos.y += Mathf.Sign(h) * move * Time.unscaledDeltaTime;
 		}
 		if ( Mathf.Abs(v) > deadZone ) {
-			pos.x += Mathf.Sign(v) * moveStep * Time.unscaledDeltaTime;
+			pos.x += Mathf.Sign(v) * move * Time.unscaledDeltaTime;
 		}
 		transform.position = pos;
 	}
@@ -72,6 +75,7 @@ public class ShipController : MonoBehaviour {
 	}
 
 	void SpawnBullet() {
+		transform.Translate(shootPushback);
 		audioSource.PlayOneShot(soundShoot);
 		Transform bullet = Instantiate<Transform>(bulletPrefab);
 		bullet.position = bulletPivot.position;
