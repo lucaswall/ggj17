@@ -89,6 +89,8 @@ MonoBehaviour:
   spawner: {fileID: 0}
   colorEnabled: {r: 1, g: 0, b: 0, a: 1}
   colorDisabled: {r: 0, g: 1, b: 0, a: 1}
+  affectDistanceSq: 0.5
+  checkThresholdPosition: 5
 --- !u!114 &114089225484672748
 MonoBehaviour:
   m_ObjectHideFlags: 1

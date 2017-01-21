@@ -39,7 +39,9 @@ public class MineSpawner : MonoBehaviour {
 			mine = NewMine();
 		}
 		mine.position = transform.position;
-		mine.GetComponent<Mine>().EnableMine();
+		Mine mineRef = mine.GetComponent<Mine>();
+		mineRef.EnableMine();
+		mineRef.CheckForNearMines();
 		mine.gameObject.SetActive(true);
 	}
 

@@ -347,9 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b66a5d6f1cede1499892181800f3d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affectDistanceSq: 0.5
-  checkThresholdPosition: 5
-  checkInterval: 0.2
 --- !u!4 &410077348
 Transform:
   m_ObjectHideFlags: 0
