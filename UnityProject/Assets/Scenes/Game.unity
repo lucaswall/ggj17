@@ -1408,9 +1408,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadZone: 0.1
   moveStep: 3.5
-  limitVertical: 3.9
   limitHorizontalLeft: 0.1
   limitHorizontalRight: 0.6
+  limitVerticalMin: -4.8
+  limitVerticalMax: 3.9
 --- !u!135 &1562795049
 SphereCollider:
   m_ObjectHideFlags: 0

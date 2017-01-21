@@ -6,8 +6,8 @@ public class ShipController : MonoBehaviour {
 
 	public float deadZone;
 	public float moveStep;
-	public float limitVertical;
 	public float limitHorizontalLeft, limitHorizontalRight;
+	public float limitVerticalMin, limitVerticalMax;
 
 	float limitHorizontalMin, limitHorizontalMax;
 
@@ -41,8 +41,8 @@ public class ShipController : MonoBehaviour {
 
 	void CheckForLimits() {
 		Vector3 pos = transform.position;
-		if ( pos.y > limitVertical ) pos.y = limitVertical;
-		if ( pos.y < -limitVertical ) pos.y = -limitVertical;
+		if ( pos.y > limitVerticalMax ) pos.y = limitVerticalMax;
+		if ( pos.y < limitVerticalMin ) pos.y = limitVerticalMin;
 		if ( pos.x > limitHorizontalMax ) pos.x = limitHorizontalMax;
 		if ( pos.x < limitHorizontalMin ) pos.x = limitHorizontalMin;
 		transform.position = pos;
