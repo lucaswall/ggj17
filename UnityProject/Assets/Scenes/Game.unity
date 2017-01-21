@@ -416,6 +416,7 @@ MonoBehaviour:
   stageNumber: {fileID: 1013950147}
   maxStageNumber: {fileID: 1231774227}
   stageSound: {fileID: 8300000, guid: f0d3a88d250ebf84eaa94799aca45eae, type: 3}
+  stageNumberScale: 2
   bars:
   - {fileID: 798549104}
   - {fileID: 1773061157}
@@ -1087,7 +1088,7 @@ SphereCollider:
   m_GameObject: {fileID: 1562795046}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}

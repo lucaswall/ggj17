@@ -12,6 +12,7 @@ public class LevelProgress : MonoBehaviour {
 	public AudioSource audioSource;
 	public Text stageNumber, maxStageNumber;
 	public AudioClip stageSound;
+	public float stageNumberScale;
 	public LevelBar[] bars;
 
 	float nextLevel;
@@ -57,6 +58,7 @@ public class LevelProgress : MonoBehaviour {
 		DeactivateAllBars();
 		audioSource.PlayOneShot(stageSound);
 		stageNumber.text = (++stage).ToString();
+		StartCoroutine(PulseText(stageNumber.transform));
 		if ( stage > maxStage ) {
 			maxStage = stage;
 			maxStageNumber.text = maxStage.ToString();
@@ -65,6 +67,17 @@ public class LevelProgress : MonoBehaviour {
 			Time.timeScale -= speedDec * Time.unscaledDeltaTime;
 			if ( Time.timeScale < 1.0f ) Time.timeScale = 1.0f;
 		}
+	}
+
+	IEnumerator PulseText(Transform t) {
+		float dt = 0.0f;
+		while ( dt <= 1.0f ) {
+			float s = Mathf.SmoothStep(stageNumberScale, 1.0f, dt);
+			t.localScale = new Vector3(s, s, s);
+			dt += Time.deltaTime;
+			yield return null;
+		}
+		t.localScale = Vector3.one;
 	}
 
 	void DeactivateAllBars() {
