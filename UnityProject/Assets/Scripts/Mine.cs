@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour {
 
-	public Renderer render;
+	public SpriteRenderer render;
 	public int waveId;
 	public bool mineEnabled = true;
 	public MineSpawner spawner;
 
 	public void DisableMine() {
-		render.material.color = Color.green;
+		render.color = Color.green;
 		mineEnabled = false;
 	}
 
 	public void EnableMine() {
-		render.material.color = Color.red;
+		render.color = Color.red;
 		mineEnabled = true;
 	}
 
