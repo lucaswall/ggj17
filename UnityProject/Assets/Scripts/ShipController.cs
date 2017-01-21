@@ -21,14 +21,6 @@ public class ShipController : MonoBehaviour {
 		transform.position = new Vector3(limitHorizontalMin, 0.0f, 0.0f);
 	}
 
-	void OnEnable() {
-		GameEvents.OnShipKilled += OnShipKilled;
-	}
-
-	void OnDisable() {
-		GameEvents.OnShipKilled -= OnShipKilled;
-	}
-
 	void Update() {
 		CheckForMove();
 		CheckForLimits();
@@ -56,7 +48,7 @@ public class ShipController : MonoBehaviour {
 		transform.position = pos;
 	}
 
-	void OnShipKilled() {
+	public void ResetPosition() {
 		transform.position = resetPosition;
 	}
 
