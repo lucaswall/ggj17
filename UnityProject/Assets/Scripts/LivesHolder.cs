@@ -17,10 +17,12 @@ public class LivesHolder : MonoBehaviour {
 
 	void OnEnable() {
 		GameEvents.OnShipKilled += OnShipKilled;
+		GameEvents.OnRestartGame += OnRestartGame;
 	}
 
 	void OnDisable() {
 		GameEvents.OnShipKilled -= OnShipKilled;
+		GameEvents.OnRestartGame -= OnRestartGame;
 	}
 
 	void ConsumeLife() {
@@ -32,6 +34,13 @@ public class LivesHolder : MonoBehaviour {
 		if ( pos >= 0 ) {
 			ConsumeLife();
 		}
+	}
+
+	void OnRestartGame() {
+		for ( int i = 0; i < livesImgs.Length; i++ ) {
+			livesImgs[i].gameObject.SetActive(true);
+		}
+		pos = livesImgs.Length - 1;
 	}
 
 }

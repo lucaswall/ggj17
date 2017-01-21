@@ -20,10 +20,12 @@ public class MineGroup : MonoBehaviour {
 
 	void OnEnable() {
 		GameEvents.OnShipKilled += DestroyAllMines;
+		GameEvents.OnRestartGame += DestroyAllMines;
 	}
 
 	void OnDisable() {
 		GameEvents.OnShipKilled -= DestroyAllMines;
+		GameEvents.OnRestartGame -= DestroyAllMines;
 	}
 
 	void CheckAllMines() {
@@ -54,6 +56,7 @@ public class MineGroup : MonoBehaviour {
 		for ( int i = 0; i < mines.Length; i++ ) {
 			mines[i].GetComponent<Mine>().DestroyMine();
 		}
+		nextCheck = checkInterval;
 	}
 
 }

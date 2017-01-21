@@ -50,6 +50,8 @@ public class ShipController : MonoBehaviour {
 
 	public void ResetPosition() {
 		transform.position = resetPosition;
+		gameObject.SetActive(true);
+		enabled = true;
 	}
 
 }

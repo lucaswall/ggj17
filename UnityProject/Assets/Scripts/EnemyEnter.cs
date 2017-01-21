@@ -8,8 +8,18 @@ public class EnemyEnter : MonoBehaviour {
 	public MineSpawner mineSpawner;
 
 	void Start() {
+		GameEvents.OnRestartGame += OnRestartGame;
+		RunIntro();
+	}
+
+	void OnDestroy() {
+		GameEvents.OnRestartGame -= OnRestartGame;
+	}
+
+	void RunIntro() {
 		sineMovement.enabled = false;
 		mineSpawner.enabled = false;
+		sineMovement.ResetAngle();
 		StartCoroutine(Intro());
 	}
 
@@ -35,6 +45,10 @@ public class EnemyEnter : MonoBehaviour {
 		sineMovement.enabled = true;
 		yield return new WaitForSeconds(1.0f);
 		mineSpawner.enabled = true;
+	}
+
+	void OnRestartGame() {
+		RunIntro();
 	}
 
 }

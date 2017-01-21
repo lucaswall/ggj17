@@ -23,4 +23,11 @@ public class GameOver : MonoBehaviour {
 		gameObject.SetActive(true);
 	}
 
+	void Update() {
+		if ( Input.GetButtonDown("Start") ) {
+			GameEvents.RestartGame();
+			gameObject.SetActive(false);
+		}
+	}
+
 }

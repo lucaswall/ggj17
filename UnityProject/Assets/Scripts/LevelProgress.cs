@@ -32,10 +32,12 @@ public class LevelProgress : MonoBehaviour {
 
 	void OnEnable() {
 		GameEvents.OnShipKilled += OnShipKilled;
+		GameEvents.OnRestartGame += OnRestartGame;
 	}
 
 	void OnDisable() {
 		GameEvents.OnShipKilled -= OnShipKilled;
+		GameEvents.OnRestartGame -= OnRestartGame;
 	}
 
 	void Update() {
@@ -94,6 +96,15 @@ public class LevelProgress : MonoBehaviour {
 	void OnShipKilled() {
 		DeactivateAllBars();
 		stageNumber.text = stage.ToString();
+	}
+
+	void OnRestartGame() {
+		stage = maxStage = 0;
+		Time.timeScale = 1.0f;
+		nextLevel = startDelay;
+		DeactivateAllBars();
+		stageNumber.text = stage.ToString();
+		maxStageNumber.text = maxStage.ToString();
 	}
 
 }

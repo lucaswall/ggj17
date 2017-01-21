@@ -26,4 +26,8 @@ public class SineMovement : MonoBehaviour {
 		return baseLine + Mathf.Sin(angle) * amplitude;
 	}
 
+	public void ResetAngle() {
+		angle = startAngle;
+	}
+
 }

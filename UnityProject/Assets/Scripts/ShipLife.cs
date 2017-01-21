@@ -17,12 +17,14 @@ public class ShipLife : MonoBehaviour {
 		shipController = GetComponent<ShipController>();
 	}
 
-	void OnEnable() {
+	void Start() {
 		GameEvents.OnShipKilled += OnShipKilled;
+		GameEvents.OnRestartGame += OnRestartGame;
 	}
 
-	void OnDisable() {
+	void OnDestroy() {
 		GameEvents.OnShipKilled -= OnShipKilled;
+		GameEvents.OnRestartGame -= OnRestartGame;
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -47,6 +49,10 @@ public class ShipLife : MonoBehaviour {
 		audioSource.PlayOneShot(soundDeath);
 		cameraShake.Shake();
 		shipController.enabled = false;
+	}
+
+	void OnRestartGame() {
+		shipController.ResetPosition();
 	}
 
 }
